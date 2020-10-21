@@ -18,7 +18,17 @@ Run the following command when in the same directory with the code:
 
 You should have python version 3.6+
 
-> python *\<ground_truth_file_name\>* *\<extraction_file_name\>* *\<output_file_name\>*
+> python main.py -gt *\<ground_truth_file_name\>* -e *\<extraction_file_name\>* -o *\<output_file_name\>*
+
+You can see the inputs and their explanation by running:
+
+> python main.py --help
+
+All inputs have default values which are:
+
+- extraction: Extraction.csv
+- ground truth : GT Ground Truth.csv
+- output: output.csv
 
 The output will be created in the same directory as the code with the output name given. 
 

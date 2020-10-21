@@ -91,10 +91,15 @@ def create_output(extraction, gt, pairs):
 
 if __name__ == "__main__":
 
-    if len(sys.argv) < 3: raise Exception("Please check input format and try again.")
+    parser = argparse.ArgumentParser(description='Accuracy measurement of line items ')
+    parser.add_argument('-e', action="store_true", default="Extraction.csv", help="Extraction file name", required=False, dest="extraction")
+    parser.add_argument('-gt', action="store_true", default="GT Ground Truth.csv", help="Ground Truth file name", required=False, dest="gt")
+    parser.add_argument('-o', action="store_true", default="output.csv", help="Output file name", required=False, dest="output")
 
-    extraction_file_name = sys.argv[1]
-    gt_file_name = sys.argv[2]
+    args = parser.parse_args()
+
+    extraction_file_name = args.extraction
+    gt_file_name = args.gt
     extraction = read_csv(extraction_file_name)
     gt = read_csv(gt_file_name)
 
@@ -102,4 +107,4 @@ if __name__ == "__main__":
     print(pairs)
 
     output = create_output(extraction, gt, pairs)
-    output.to_csv("output.csv", index=False ,float_format="{:.2f}")
+    output.to_csv(args.output, index=False ,float_format="{:.2f}")
