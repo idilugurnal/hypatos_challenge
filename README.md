@@ -45,7 +45,7 @@ with the ground truth and measure accuracy for the line items.
 For each line item in ground truth the following is checked:
 The file name of line item in gt must be equal to the file name of the line item in extraction, if this is satisfied,
     1. The description of the line item in gt is compared to the description of the line item in extraction, if they are equal a match occurs
-    2. Else if the description of the line item in gt has a calculated distance that is less than MAXD with the description of the line item in extraction AND quantity, total price, unit price of ground truth line item all have a calculated distance that is less than 2 compared to quantity, total price, unit price of extraction line item, a match occurs.
+    2. Else if the description of the line item in gt has a calculated distance that is less than MAXD with the description of the line item in extraction AND quantity, total price, unit price of ground truth line item all have a calculated distance that is less than MAXV compared to quantity, total price, unit price of extraction line item, a match occurs.
     3. Else a match does not occur.
 
 If not match occurs -1 is returned.
