@@ -1,5 +1,6 @@
 import pandas as pd
 import Levenshtein as ls
+import sys
 
 MAXD = 3
 MAXV = 2
@@ -43,8 +44,6 @@ def generate_matches(gt, extraction):
     return pairs
 
 
-
-
 def read_csv(filename):
     df = pd.read_csv(filename, usecols=["File_name", "Description", "Quantity", "Unit price", "Total price"], keep_default_na=False)
     return df
@@ -52,7 +51,12 @@ def read_csv(filename):
 
 if __name__ == "__main__":
 
-    extraction = read_csv("Extraction.csv")
-    gt = read_csv("GT Ground Truth.csv")
+    if len(sys.argv) < 3: raise Exception("Please check input format and try again.")
+
+    extraction_file_name = sys.argv[1]
+    gt_file_name = sys.argv[2]
+    extraction = read_csv(extraction_file_name)
+    gt = read_csv(gt_file_name)
+
     pairs = generate_matches(gt, extraction)
     print(pairs)
