@@ -11,6 +11,6 @@
 
 You should have python version 3.6+
 
-python *\<ground_truth_file_name\>* *\<extraction_file_name\>* *\<output_file_name\>
+python *\<ground_truth_file_name\>* *\<extraction_file_name\>* *\<output_file_name\>*
 
 The output will be created in the same directory as the code with the output name given. 
