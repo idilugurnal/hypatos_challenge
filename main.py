@@ -1,6 +1,7 @@
 import pandas as pd
 import Levenshtein as ls
 import sys
+import argparse
 
 MAXD = 3
 MAXV = 2
@@ -73,7 +74,7 @@ def create_output(extraction, gt, pairs):
         output.insert(loc=6, column="Evaluation", value="", allow_duplicates=True)
         output.insert(loc=9, column="Evaluation", value="", allow_duplicates=True)
         output.insert(loc=12, column="Evaluation", value="", allow_duplicates=True)
-        print()
+        
         for pair in pairs:
             if pair[1] >= 0:
                 output.at[pair[0],"Description_Extraction"] = extraction["Description"][pair[1]]
@@ -85,9 +86,6 @@ def create_output(extraction, gt, pairs):
                 output.at[pair[0],"Total_price_Extraction"] = extraction["Total price"][pair[1]]
                 output.iat[pair[0],12] = numerical_evaluation(gt["Total price"][pair[0]], extraction["Total price"][pair[1]])
 
-        pd.set_option('display.max_columns' , None)
-        print("Output: ")
-        print(output)
         return output
 
 

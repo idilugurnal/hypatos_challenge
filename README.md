@@ -6,6 +6,13 @@
 
 - [pandas](https://pandas.pydata.org) -> pip install pandas
 - [Levenshtein](https://pypi.org/project/python-Levenshtein/) -> pip install python-Levenshtein
+- [argparse](https://docs.python.org/3/library/argparse.html) -> pip install argparse
+
+** OR **
+
+- Run the following command when in the same directory with the code:
+
+> pip install -r requirements.txt
 
 ### Run:
 
