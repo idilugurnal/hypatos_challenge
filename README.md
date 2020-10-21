@@ -42,12 +42,24 @@ with the ground truth and measure accuracy for the line items.
 
 ### 1. Match each line item in the ground truth file with an item in the extraction file 
 
-To do this matching, description ...
+For each line item in ground truth the following is checked:
+The file name of line item in gt must be equal to the file name of the line item in extraction, if this is satisfied,
+    1. The description of the line item in gt is compared to the description of the line item in extraction, if they are equal a match occurs
+    2. Else if the description of the line item in gt has a calculated distance that is less than MAXD with the description of the line item in extraction AND quantity, total price, unit price of ground truth line item all have a calculated distance that is less than 2 compared to quantity, total price, unit price of extraction line item, a match occurs.
+    3. Else a match does not occur.
+
+If not match occurs -1 is returned.
+If more than one match occurs -2 is returned.
+If a single match occurs the line index of the extraction match is returned.
 
 ### 2. Compare matched items 
 
-Comparison
+Levenshtein distance comparison is used for string items.
+For numerical items, first the numerical value is converted to integer and then converted back to string. Finally, Levenshtein distance is used for comparison.
 
 ### 3. Evaluation
 
-Error evaluation
+For quantity, unit price and total price, the values are converted to integer and then they are compared with Levenshtein distance. If the compared values are equal (distance = 0), the evaluation value is 0, else the value is 1 (distance > 0).
+
+For Description, the following evaluation is used:
+- Levenshtein distance between gt and extraction description item / length of gt description item
