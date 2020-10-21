@@ -17,8 +17,6 @@ def calculate_distance(str1, str2):
     Returns:
     An integer distance value.
     """
-
-    if str1 == "" or str2 == "": return 1000
     return ls.distance(str(str1), str(str2))
 
 def convert_to_int(value):
@@ -35,7 +33,7 @@ def convert_to_int(value):
     if value == "": return value
     return(int(float(value)))
 
-def check_match(sample, extraction, matched):
+def check_match(sample, extraction):
 
     """
     Check the match of a single line from gt with lines in extraction
@@ -43,7 +41,6 @@ def check_match(sample, extraction, matched):
     Args:
     sample: Single Dataframe item to be matched
     extraction: Dataframe of extraction list
-    matched: A list of already matched lines in extraction file
 
     Returns:
     Integer index that the sample is matched to.
@@ -54,11 +51,12 @@ def check_match(sample, extraction, matched):
     counter = 0
     index = -1
     for i in range(0,length):
-        if i not in matched:
+        if sample["File_name"] == extraction.iloc[i]["File_name"]:
             if sample.Description == extraction.iloc[i].Description\
                 or (calculate_distance(sample["Description"], extraction.iloc[i]["Description"]) < MAXD
                     and (calculate_distance(convert_to_int(sample["Unit price"]), convert_to_int(extraction.iloc[i]["Unit price"])) < MAXV
-                         or calculate_distance(convert_to_int(sample["Total price"]), convert_to_int(extraction.iloc[i]["Total price"])) < MAXV)):
+                         and calculate_distance(convert_to_int(sample["Total price"]), convert_to_int(extraction.iloc[i]["Total price"])) < MAXV
+                            and calculate_distance(convert_to_int(sample["Quantity"]), convert_to_int(extraction.iloc[i]["Quantity"])) < MAXV)):
 
                 counter += 1
                 index = i
@@ -79,13 +77,10 @@ def generate_matches(gt, extraction):
     Ex: [(0,0),(1,-1)] -> This means 0th line in gt is matched with 0th line in extraction and 1st line in gt has no match.
     """
     
-    matched = set()
     pairs = []
     length_gt = len(gt.index)
     for i in range (0,length_gt):
-        m = check_match(gt.iloc[i], extraction, matched)
-        if m > -1:
-            matched.add(m)
+        m = check_match(gt.iloc[i], extraction)
         pairs.append((i,m))
 
     return pairs
