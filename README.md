@@ -4,8 +4,8 @@
 
 ### Packages to Install before Running:
 
-- [pandas](https://pandas.pydata.org)
-- [Levenshtein](https://pypi.org/project/python-Levenshtein/)
+- [pandas](https://pandas.pydata.org) -> pip install pandas
+- [Levenshtein](https://pypi.org/project/python-Levenshtein/) pip install python-Levenshtein
 
 ### Run:
 
