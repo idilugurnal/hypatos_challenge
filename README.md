@@ -49,8 +49,8 @@ The file name of line item in gt must be equal to the file name of the line item
     1. The description of the line item in gt is compared to the description of the line item in extraction, if they are equal a match occurs
 
 
-    2. Else if the description of the line item in gt has a calculated distance that is less than MAXD with the description of the line item\
-    in extraction AND quantity, total price, unit price of ground truth line item all have a calculated distance that is less than MAXV\
+    2. Else if the description of the line item in gt has a calculated distance that is less than MAXD with the description of the line item
+    in extraction AND quantity, total price, unit price of ground truth line item all have a calculated distance that is less than MAXV
     compared to quantity, total price, unit price of extraction line item, a match occurs.
 
 
@@ -59,6 +59,8 @@ The file name of line item in gt must be equal to the file name of the line item
 If not match occurs -1 is returned.
 If more than one match occurs -2 is returned.
 If a single match occurs the line index of the extraction match is returned.
+
+More than one match is treated the same way as no match. The reason is: it is not possible to determine which match to consider as the correct one therefore, this is counted as an error.
 
 ### 2. Compare matched items 
 
@@ -71,3 +73,9 @@ For quantity, unit price and total price, the values are converted to integer an
 
 For Description, the following evaluation is used:
 - Levenshtein distance between gt and extraction description item / length of gt description item
+
+## Unit Test
+
+The methods developed for this challenge is tested and the test can be run as:
+
+> python test.py
