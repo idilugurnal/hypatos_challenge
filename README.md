@@ -18,11 +18,11 @@ Run the following command when in the same directory with the code:
 
 You should have python version 3.6+
 
-> python main.py -gt *\<ground_truth_file_name\>* -e *\<extraction_file_name\>* -o *\<output_file_name\>*
+> python comparison_service.py -gt *\<ground_truth_file_name\>* -e *\<extraction_file_name\>* -o *\<output_file_name\>*
 
 You can see the inputs and their explanation by running:
 
-> python main.py --help
+> python comparison_service.py --help
 
 All inputs have default values which are:
 
@@ -49,9 +49,11 @@ The file name of line item in gt must be equal to the file name of the line item
     1. The description of the line item in gt is compared to the description of the line item in extraction, if they are equal a match occurs
 
 
-    2. Else if the description of the line item in gt has a calculated distance that is less than MAXD with the description of the line item in extraction AND quantity, total price, unit price of ground truth line item all have a calculated distance that is less than MAXV compared to quantity, total price, unit price of extraction line item, a match occurs.
+    2. Else if the description of the line item in gt has a calculated distance that is less than MAXD with the description of the line item\
+    in extraction AND quantity, total price, unit price of ground truth line item all have a calculated distance that is less than MAXV\
+    compared to quantity, total price, unit price of extraction line item, a match occurs.
 
-    
+
     3. Else a match does not occur.
 
 If not match occurs -1 is returned.
