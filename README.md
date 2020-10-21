@@ -8,9 +8,9 @@
 - [Levenshtein](https://pypi.org/project/python-Levenshtein/) -> pip install python-Levenshtein
 - [argparse](https://docs.python.org/3/library/argparse.html) -> pip install argparse
 
-** OR **
+**OR**
 
-- Run the following command when in the same directory with the code:
+Run the following command when in the same directory with the code:
 
 > pip install -r requirements.txt
 
@@ -18,7 +18,7 @@
 
 You should have python version 3.6+
 
-python *\<ground_truth_file_name\>* *\<extraction_file_name\>* *\<output_file_name\>*
+> python *\<ground_truth_file_name\>* *\<extraction_file_name\>* *\<output_file_name\>*
 
 The output will be created in the same directory as the code with the output name given. 
 
