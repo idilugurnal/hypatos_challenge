@@ -1,0 +1,6 @@
+﻿File_name,Description_GT,Description_Extraction,Evaluation,Quantity_GT,Quantity_Extraction,Evaluation,Unit_price_GT,Unit_price_Extraction,Evaluation,Total_price_GT,Total_price_Extraction,Evaluation
+1.pdf,Complex service 1,Complex ervice 1,"TBD by developer, should be a float value",1,1,0,50,50,0,50,50,0
+1.pdf,Basic service 2,Basic service 1,"TBD by developer, should be a float value",2,2,0,20,20,0,40,40,0
+1.pdf,Basic service 1,,1,1,,,15,,,15,,
+3.pdf,Other service 1,Other service,"TBD by developer, should be a float value",,,,,,,15,1,1
+3.pdf,Other service 2,Other service 3,"TBD by developer, should be a float value",,,,,,,60,60.01,0
